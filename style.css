@@ -1,0 +1,16 @@
+p {   color: rgb(1, 44, 187);};
+
+/* style.css */
+body {
+    background-color: #aca2a2; /* Cor de fundo da página (cinza claro) */
+}
+
+h1 {
+    color: blue; /* Cor do título (azul) */
+    text-align: center; /* Alinhamento do título */
+}
+
+p {
+    font-size: 18px; /* Tamanho da fonte do parágrafo */
+    color: black;
+}
