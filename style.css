@@ -2,15 +2,15 @@ p {   color: rgb(0, 0, 0);};
 
 /* style.css */
 body {
-    background-color: #ffa7e2; /* Cor de fundo da página (cinza claro) */
+    background-color: #ffa7e2;
 }
 
 h1 {
-    color: rgb(0, 0, 0); /* Cor do título (azul) */
-    text-align: center; /* Alinhamento do título */
+    color: rgb(0, 0, 0);
+    text-align: center; 
 }
 
 p {
-    font-size: 18px; /* Tamanho da fonte do parágrafo */
-    color: black;
+    font-size: 18px; 
+    color: rgb(0, 0, 0);
 }
