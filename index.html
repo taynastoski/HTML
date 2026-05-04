@@ -50,4 +50,69 @@ body {
     <strong>Basta adicionar os ingredientes que você tem e deseja utilizar, e o site irá apresentar opções de receitas
     que podem ser preparadas com esses ingredientes.</strong>
     </p>
+     <p>Digite os ingredientes que você tem separados por vírgula (ex: farinha, ovo, leite):</p>
+    <input type="text" id="ingredientes" placeholder="Ex: farinha, ovo, leite">
+    <button onclick="buscarReceitas()">Buscar Receitas</button>
+
+    <div id="receitas"></div>
+
+    <script>
+        const receitas = [
+            { 
+                nome: "Bolo Simples", 
+                ingredientes: ["farinha", "ovo", "leite", "manteiga", "açúcar"],
+                preparo: "Misture todos os ingredientes, bata bem, coloque em forma untada e asse em forno médio por 35 minutos."
+            },
+            { 
+                nome: "Panquecas", 
+                ingredientes: ["farinha", "ovo", "leite"],
+                preparo: "Misture os ingredientes até formar uma massa homogênea. Cozinhe em frigideira antiaderente, virando para dourar os dois lados."
+            },
+            { 
+                nome: "Omelete", 
+                ingredientes: ["ovo", "leite", "queijo"],
+                preparo: "Bata os ovos com o leite, adicione queijo, cozinhe em frigideira até firmar e sirva."
+            },
+            { 
+                nome: "Biscoitos", 
+                ingredientes: ["farinha", "manteiga", "açúcar"],
+                preparo: "Misture os ingredientes, modele os biscoitos, asse em forno médio por 15-20 minutos até dourar."
+            },
+            { 
+                nome: "Crepe", 
+                ingredientes: ["farinha", "ovo", "leite", "açúcar"],
+                preparo: "Misture bem os ingredientes até formar massa líquida. Cozinhe em frigideira antiaderente, recheie a gosto e dobre."
+            }
+        ];
+
+        function buscarReceitas() {
+            const input = document.getElementById("ingredientes").value.toLowerCase();
+            const itens = input.split(',').map(i => i.trim()).filter(i => i !== "");
+            const resultadoDiv = document.getElementById("receitas");
+            resultadoDiv.innerHTML = "";
+
+            if (itens.length === 0) {
+                resultadoDiv.innerHTML = "<p>Digite pelo menos um ingrediente.</p>";
+                return;
+            }
+
+            const receitasEncontradas = receitas.filter(receita => {
+                return receita.ingredientes.every(ing => itens.includes(ing));
+            });
+
+            if (receitasEncontradas.length === 0) {
+                resultadoDiv.innerHTML = "<p>Não encontramos receitas com esses ingredientes.</p>";
+            } else {
+                receitasEncontradas.forEach(r => {
+                    const div = document.createElement("div");
+                    div.className = "receita";
+                    div.innerHTML = `<strong>${r.nome}</strong><br>
+                                     Ingredientes: ${r.ingredientes.join(", ")}<br>
+                                     <div class="modo-preparo"><strong>Modo de preparo:</strong> ${r.preparo}</div>`;
+                    resultadoDiv.appendChild(div);
+                });
+            }
+        }
+    </script>
+</body>
 </html>
